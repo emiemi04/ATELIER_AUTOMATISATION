@@ -1,25 +1,182 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Agify</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agify - Estimation d'âge</title>
+
+    <style>
+        :root {
+            --bg:#0b1020;
+            --card:#121a33;
+            --text:#e9edff;
+            --muted:#aab4d4;
+            --accent:#77baff;
+            --ok:#62d6a0;
+            --line:#23305c;
+        }
+
+        * {
+            box-sizing:border-box;
+        }
+
+        body {
+            margin:0;
+            font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            background:radial-gradient(900px 500px at 10% 0%, #172257 0%, var(--bg) 60%);
+            color:var(--text);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container {
+            width:90%;
+            max-width:600px;
+        }
+
+        .card {
+            background:rgba(18,26,51,0.95);
+            border:1px solid rgba(255,255,255,0.08);
+            border-radius:18px;
+            padding:30px;
+            box-shadow:0 15px 35px rgba(0,0,0,0.4);
+            text-align:center;
+        }
+
+        h1 {
+            margin-top:0;
+            font-size:32px;
+        }
+
+        .emoji {
+            font-size:55px;
+        }
+
+        p {
+            color:var(--muted);
+        }
+
+        form {
+            margin-top:25px;
+        }
+
+        input {
+            width:100%;
+            padding:14px;
+            border-radius:12px;
+            border:1px solid rgba(255,255,255,0.1);
+            background:rgba(0,0,0,0.25);
+            color:white;
+            font-size:16px;
+        }
+
+        button, .back {
+            display:inline-block;
+            margin-top:20px;
+            padding:14px 28px;
+            border-radius:12px;
+            border:none;
+            cursor:pointer;
+            font-size:16px;
+            font-weight:bold;
+            text-decoration:none;
+            transition:0.2s;
+        }
+
+        button {
+            background:linear-gradient(135deg,#77baff,#62d6a0);
+            color:#0b1020;
+        }
+
+        button:hover, .back:hover {
+            transform:translateY(-3px);
+        }
+
+        .result {
+            margin-top:30px;
+            padding:20px;
+            border-radius:15px;
+            background:rgba(98,214,160,0.12);
+            border:1px solid rgba(98,214,160,0.3);
+        }
+
+        .age {
+            font-size:45px;
+            font-weight:bold;
+            color:var(--ok);
+        }
+
+        .back {
+            background:rgba(119,186,255,0.15);
+            border:1px solid rgba(119,186,255,0.3);
+            color:var(--text);
+        }
+
+    </style>
 </head>
+
 <body>
 
-<h1>Prédiction d'âge</h1>
+<div class="container">
 
-<form action="/agify" method="get">
-    <input type="text" name="name" placeholder="Entrez un prénom">
-    <button type="submit">Rechercher</button>
-</form>
+    <div class="card">
 
-{% if data %}
-    <h2>Résultat</h2>
+        <div class="emoji">🎂</div>
 
-    <p><strong>Nom :</strong> {{ data.name }}</p>
-    <p><strong>Âge estimé :</strong> {{ data.age }} ans</p>
-    <p><strong>Basé sur :</strong> {{ data.count }} personnes</p>
-{% endif %}
+        <h1>API Agify</h1>
+
+        <p>
+            Entrez un prénom pour obtenir une estimation de l'âge moyen
+            associé grâce à l'API Agify.
+        </p>
+
+
+        <form action="/agify" method="get">
+            <input 
+                type="text" 
+                name="name" 
+                placeholder="Exemple : lucas"
+                required
+            >
+
+            <button type="submit">
+                Rechercher
+            </button>
+        </form>
+
+
+        {% if data %}
+        <div class="result">
+
+            <h2>Résultat</h2>
+
+            <p>
+                Prénom :
+                <b>{{ data.name }}</b>
+            </p>
+
+            <div class="age">
+                {{ data.age }} ans
+            </div>
+
+            <p>
+                Basé sur {{ data.count }} personnes
+            </p>
+
+        </div>
+        {% endif %}
+
+
+        <a class="back" href="/">
+            ⬅ Retour à l'accueil
+        </a>
+
+
+    </div>
+
+</div>
 
 </body>
 </html>
