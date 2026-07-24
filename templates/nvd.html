@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>NVD Vulnerabilities</title>
+
+<style>
+body {
+    background:#0b1020;
+    color:white;
+    font-family:Arial;
+}
+
+.card {
+    max-width:900px;
+    margin:40px auto;
+    background:#121a33;
+    padding:25px;
+    border-radius:16px;
+}
+
+.cve {
+    border:1px solid #23305c;
+    padding:15px;
+    margin:15px 0;
+    border-radius:12px;
+}
+
+a {
+    color:#77baff;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🔐 Vulnérabilités NVD</h1>
+
+{% for item in vulnerabilities %}
+
+<div class="cve">
+
+<h2>
+{{ item.cve.id }}
+</h2>
+
+<p>
+{{ item.cve.descriptions[0].value }}
+</p>
+
+</div>
+
+{% endfor %}
+
+
+<a href="/">
+⬅ Retour accueil
+</a>
+
+
+</div>
+
+</body>
+</html>
