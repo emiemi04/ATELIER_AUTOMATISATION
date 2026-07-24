@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PhishStats</title>
+</head>
+<body>
+
+<h1>Dernières campagnes de phishing</h1>
+
+<table border="1">
+    <tr>
+        <th>Date</th>
+        <th>URL</th>
+        <th>Pays</th>
+    </tr>
+
+    {% for site in data %}
+    <tr>
+        <td>{{ site.date }}</td>
+        <td>{{ site.url }}</td>
+        <td>{{ site.country }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
