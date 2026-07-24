@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Dog Facts</title>
+</head>
+<body>
+
+<h1>🐶 5 faits sur les chiens</h1>
+
+<ul>
+{% for dog in facts %}
+    <li>{{ dog.fact }}</li>
+{% endfor %}
+</ul>
+
+<p><a href="/">Retour à l'accueil</a></p>
+
+</body>
+</html>
