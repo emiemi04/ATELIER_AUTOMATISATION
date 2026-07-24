@@ -160,18 +160,40 @@
     }
     button:hover{filter:brightness(1.05)}
     .small{font-size:12px}
+
+    .api-button {
+  display:inline-block;
+  margin:20px 0;
+  padding:12px 24px;
+  border-radius:12px;
+  background:linear-gradient(135deg, #77baff, #62d6a0);
+  color:#0b1020;
+  font-weight:700;
+  font-size:16px;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(119,186,255,0.25);
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.api-button:hover {
+  text-decoration:none;
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(119,186,255,0.4);
+}
   </style>
 </head>
 
 <body>
 <header>
   <div class="row">
+    <a href="/agify" class="api-button">
+  🎂 Tester l'API Agify
+</a>
     <span class="pill">Atelier M1 — Tests API</span>
     <span class="pill ok">Python + Flask</span>
     <span class="pill warn">PythonAnywhere</span>
     <span class="pill">Testing as Code</span>
   </div>
-  <a href="/agify">Tester l'API Agify</a>
   <h1>Atelier — Automatisation des tests d’API publiques</h1>
   <p class="subtitle">
     Vous allez choisir une API dans la liste <a href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener">public-apis</a>
