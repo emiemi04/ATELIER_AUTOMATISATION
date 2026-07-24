@@ -43,10 +43,10 @@ Pour utiliser cette Action (deploy-pythonanywhere.yml), **vous avez besoin de cr
 
 Pour cet atelier, **vous avez 4 secrets à créer** dans votre Repository GitHUB : **Settings → Secrets and variables → Actions → New repository secret**  
   
-**PA_USERNAME** = votre username PythonAnywhere.  
-**PA_TOKEN** = votre API token. Token à créer dans pythonanywhere (Acount → API Token).  
-**PA_TARGET_DIR** = Web → Source code (ex: /home/monuser/myapp).  
-**PA_WEBAPP_DOMAIN** = votre site (ex: monuser.pythonanywhere.com).  
+**PA_USERNAME** = votre username PythonAnywhere.  DONE
+**PA_TOKEN** = votre API token. Token à créer dans pythonanywhere (Acount → API Token).  DONE
+**PA_TARGET_DIR** = Web → Source code (ex: /home/monuser/myapp).  DONE
+**PA_WEBAPP_DOMAIN** = votre site (ex: monuser.pythonanywhere.com).  DONE
   
 **Dernière étape :** Pour engager l'automatisation de votre première Action, vous devez cliquer sur le gros boutton vert dans l'onglet supérieur [Actions] dans votre Repository Github. Le boutton s'intitule "I understand my workflows, go ahead and enable them". Ensuite procédez à une "petite" modification de votre fichier README.md GitHub puis faites un [Commit] pour déclancher l'action.   
 
