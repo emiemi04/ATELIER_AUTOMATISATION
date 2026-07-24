@@ -15,18 +15,14 @@ def consignes():
 if __name__ == "__main__":
     # utile en local uniquement
     app.run(host="0.0.0.0", port=5000, debug=True)
-     
-@app.route("/dogfacts")
-def dogfacts():
-    url = "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=5"
 
-    try:
-        response = requests.get(url, timeout=10)
-        response.raise_for_status()
+@app.route("/agify")
+def agify():
+    nom = request.args.get("name", "emilie")
 
-        facts = response.json()
+    url = f"https://api.agify.io?name={nom}"
 
-        return render_template("dogfacts.html", facts=facts)
+    response = requests.get(url)
+    data = response.json()
 
-    except requests.exceptions.RequestException as e:
-        return f"Erreur : {e}"
+    return render_template("agify.html", data=data)
