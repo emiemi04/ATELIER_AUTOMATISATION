@@ -26,3 +26,24 @@ def agify():
     data = response.json()
 
     return render_template("agify.html", data=data)
+
+@app.route("/nvd")
+def nvd():
+
+    url = "https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=flask"
+
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+
+        data = response.json()
+
+        vulnerabilities = data.get("vulnerabilities", [])
+
+        return render_template(
+            "nvd.html",
+            vulnerabilities=vulnerabilities[:10]
+        )
+
+    except requests.exceptions.RequestException as e:
+        return f"Erreur API NVD : {e}"
