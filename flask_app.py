@@ -14,3 +14,19 @@ def consignes():
 if __name__ == "__main__":
     # utile en local uniquement
     app.run(host="0.0.0.0", port=5000, debug=True)
+     
+@app.get("/phishstats")
+def phishstats():
+    url = "https://phishstats.info:2096/api/phishing"
+
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+
+        data = response.json()
+
+        # On limite à 20 résultats
+        return render_template("phishstats.html", data=data[:20])
+
+    except requests.RequestException as e:
+        return f"Erreur : {e}"
